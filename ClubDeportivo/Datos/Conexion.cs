@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using MySql.Data.MySqlClient;
 
-namespace ClubDeportivo
+namespace ClubDeportivo.Datos
 {
     public class Conexion
     {
@@ -12,36 +12,37 @@ namespace ClubDeportivo
         private string puerto;
         private string usuario;
         private string clave;
-        private static Conexion? con = null;
+        private static Conexion con = null;
 
         private Conexion()
         {
-            this.baseDatos = "Proyecto";
-            this.servidor = "localhost";
-            this.puerto = "3306";
-            this.usuario = "root";
-            this.clave = "ag140209";
+            baseDatos = "proyecto";
+            servidor = "localhost";
+            puerto = "3306";
+            usuario = "root";
+           // clave = "ag140209";
+            clave = "";
         }
 
         // proceso de interacción
-        public MySqlConnection CrearConcexion()
+        public MySqlConnection CrearConexion()
         {
             // instanciamos una conexion
-            MySqlConnection? cadena = new MySqlConnection();
+            MySqlConnection cadena = new MySqlConnection();
             // el bloque try permite controlar errores
             try
             {
-                cadena.ConnectionString = "datasource=" + this.servidor +
-                ";port=" + this.puerto +
-                ";username=" + this.usuario +
-                ";password=" + this.clave +
-                ";Database=" + this.baseDatos;
+                cadena.ConnectionString = "datasource=" + servidor +
+                ";port=" + puerto +
+                ";username=" + usuario +
+                ";password=" + clave +
+                ";Database=" + baseDatos;
 
             }
             catch (Exception ex)
             {
                 cadena = null;
-                throw;
+                throw ex;
             }
             return cadena;
         }
