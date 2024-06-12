@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using MySql.Data.MySqlClient;
+using System.Threading.Tasks;
 
-namespace ClubDeportivo
+namespace ClubDeportivo1
 {
     internal class Carnet
     {
@@ -12,8 +13,8 @@ namespace ClubDeportivo
 
         public Carnet(int numero, DateTime fechaEmision)
         {
-            Numero = numero;
-            FechaEmision = fechaEmision;
+            this.Numero = numero;
+            this.FechaEmision = fechaEmision;
         }
     }
 }

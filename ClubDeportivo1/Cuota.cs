@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using MySql.Data.MySqlClient;
+using System.Threading.Tasks;
 
-namespace ClubDeportivo
+namespace ClubDeportivo1
 {
     internal class Cuota
     {
@@ -14,9 +15,9 @@ namespace ClubDeportivo
 
         public Cuota(DateTime fechaPago, float monto, string estado)
         {
-            FechaPago = fechaPago;
-            Monto = monto;
-            Estado = estado;
+            this.FechaPago = fechaPago;
+            this.Monto = monto;
+            this.Estado = estado;
         }
     }
 }

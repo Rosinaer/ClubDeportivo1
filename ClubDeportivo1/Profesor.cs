@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using MySql.Data.MySqlClient;
+using System.Threading.Tasks;
 
-namespace ClubDeportivo
+namespace ClubDeportivo1
 {
     internal class Profesor
     {
@@ -15,9 +16,9 @@ namespace ClubDeportivo
 
         public Profesor(string nombre, string horario)
         {
-            IdProfesor = ++_contadorId;
-            Nombre = nombre;
-            Horario = horario;
+            this.IdProfesor = ++_contadorId;
+            this.Nombre = nombre;
+            this.Horario = horario;
         }
     }
 }

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using MySql.Data.MySqlClient;
+using System.Threading.Tasks;
 
-namespace ClubDeportivo
+namespace ClubDeportivo1
 {
     internal class Actividad
     {
@@ -16,10 +17,10 @@ namespace ClubDeportivo
 
         public Actividad(string nombre, float costo)
         {
-            IdActividad = ++_contadorId;
-            Nombre = nombre;
-            Costo = costo;
-            Cupo = 3;
+            this.IdActividad = ++_contadorId;
+            this.Nombre = nombre;
+            this.Costo = costo;
+            this.Cupo = 3;
         }
     }
 }
