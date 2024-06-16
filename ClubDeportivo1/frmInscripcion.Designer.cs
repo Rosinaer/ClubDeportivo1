@@ -43,6 +43,7 @@
             btnIngresar = new Button();
             btnLimpiar = new Button();
             btnVolver = new Button();
+            label1 = new Label();
             SuspendLayout();
             // 
             // lblTitulo
@@ -109,6 +110,7 @@
             // 
             cboTipo.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             cboTipo.FormattingEnabled = true;
+            cboTipo.Items.AddRange(new object[] { "Socio", "No Socio" });
             cboTipo.Location = new Point(521, 231);
             cboTipo.Name = "cboTipo";
             cboTipo.Size = new Size(121, 28);
@@ -121,42 +123,42 @@
             txtNombre.Location = new Point(203, 132);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(162, 23);
-            txtNombre.TabIndex = 7;
+            txtNombre.TabIndex = 1;
             // 
             // txtContacto
             // 
             txtContacto.Location = new Point(203, 231);
             txtContacto.Name = "txtContacto";
             txtContacto.Size = new Size(162, 23);
-            txtContacto.TabIndex = 8;
+            txtContacto.TabIndex = 5;
             // 
             // txtDireccion
             // 
             txtDireccion.Location = new Point(521, 183);
             txtDireccion.Name = "txtDireccion";
             txtDireccion.Size = new Size(162, 23);
-            txtDireccion.TabIndex = 9;
+            txtDireccion.TabIndex = 4;
             // 
             // txtApellido
             // 
             txtApellido.Location = new Point(521, 131);
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(162, 23);
-            txtApellido.TabIndex = 10;
+            txtApellido.TabIndex = 2;
             // 
             // txtDocumento
             // 
             txtDocumento.Location = new Point(203, 182);
             txtDocumento.Name = "txtDocumento";
             txtDocumento.Size = new Size(162, 23);
-            txtDocumento.TabIndex = 11;
+            txtDocumento.TabIndex = 3;
             // 
             // btnIngresar
             // 
             btnIngresar.Location = new Point(182, 330);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(100, 32);
-            btnIngresar.TabIndex = 12;
+            btnIngresar.TabIndex = 7;
             btnIngresar.Text = "INGRESAR";
             btnIngresar.UseVisualStyleBackColor = true;
             btnIngresar.Click += btnIngresar_Click;
@@ -166,7 +168,7 @@
             btnLimpiar.Location = new Point(333, 330);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(100, 32);
-            btnLimpiar.TabIndex = 13;
+            btnLimpiar.TabIndex = 8;
             btnLimpiar.Text = "LIMPIAR";
             btnLimpiar.UseVisualStyleBackColor = true;
             btnLimpiar.Click += btnLimpiar_Click;
@@ -176,10 +178,20 @@
             btnVolver.Location = new Point(471, 330);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(100, 32);
-            btnVolver.TabIndex = 14;
+            btnVolver.TabIndex = 9;
             btnVolver.Text = "VOLVER";
             btnVolver.UseVisualStyleBackColor = true;
             btnVolver.Click += btnVolver_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(429, 234);
+            label1.Name = "label1";
+            label1.Size = new Size(56, 20);
+            label1.TabIndex = 15;
+            label1.Text = "Cliente";
             // 
             // frmInscripcion
             // 
@@ -187,6 +199,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Moccasin;
             ClientSize = new Size(779, 450);
+            Controls.Add(label1);
             Controls.Add(btnVolver);
             Controls.Add(btnLimpiar);
             Controls.Add(btnIngresar);
@@ -203,6 +216,7 @@
             Controls.Add(lblNombre);
             Controls.Add(lblTitulo);
             Name = "frmInscripcion";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmInscripcion";
             ResumeLayout(false);
             PerformLayout();
@@ -225,5 +239,6 @@
         private Button btnIngresar;
         private Button btnLimpiar;
         private Button btnVolver;
+        private Label label1;
     }
 }

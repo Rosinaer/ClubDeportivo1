@@ -13,7 +13,7 @@ namespace ClubDeportivo1.Datos
     {
         public string Nueva_Pers(E_Persona pers)
         {
-            string? salida;
+            string salida;
             MySqlConnection sqlCon = new MySqlConnection();
             try
             {
@@ -33,7 +33,9 @@ namespace ClubDeportivo1.Datos
 
                 comando.Parameters.Add("Tip", MySqlDbType.VarChar).Value = pers.TipoP;
 
-               
+                comando.Parameters.Add("FechaRegistro", MySqlDbType.Date).Value = pers.FechaRegistro;
+
+
 
                 MySqlParameter ParCodigo = new MySqlParameter();
                 ParCodigo.ParameterName = "rta";

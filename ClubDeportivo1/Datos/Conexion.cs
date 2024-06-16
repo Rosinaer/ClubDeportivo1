@@ -23,13 +23,14 @@ namespace ClubDeportivo1.Datos
             this.servidor = "localhost";
             this.puerto = "3306";
             this.usuario = "root";
-            this.clave = "Ag140209";
+            this.clave = "";
+            //this.clave = "Ag140209";
         }
         // proceso de interacción
         public MySqlConnection CrearConexion()
         {
             // instanciamos una conexion
-            MySqlConnection? cadena = new MySqlConnection();
+            MySqlConnection cadena = new MySqlConnection();
             // el bloque try permite controlar errores
             try
             {

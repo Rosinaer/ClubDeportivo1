@@ -22,8 +22,8 @@ namespace ClubDeportivo1
 
         private void cboTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cboTipo.Items.Add("Socio");
-            cboTipo.Items.Add("No Socio");
+            //cboTipo.Items.Add("Socio");
+            //cboTipo.Items.Add("No Socio");
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
@@ -42,7 +42,11 @@ namespace ClubDeportivo1
                 pers.NombreP = txtNombre.Text;
                 pers.ApellidoP = txtApellido.Text;
                 pers.DocP = Convert.ToInt32(txtDocumento.Text);
+                pers.DireccionP = txtDireccion.Text;
+                pers.ContactoP = txtContacto.Text;
                 pers.TipoP = cboTipo.Text;
+                pers.FechaRegistro = DateTime.Today;
+
 
                 // instanciamos para usar el metodo dentro de persona
                 Datos.Persona persona = new Datos.Persona();
@@ -57,7 +61,7 @@ namespace ClubDeportivo1
                     }
                     else
                     {
-                        MessageBox.Show("se almaceno con exito con el codigo Nro " +
+                        MessageBox.Show("Se almaceno con exito con el codigo Nro " +
                          respuesta, "AVISO DEL SISTEMA",
                         MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
@@ -70,6 +74,8 @@ namespace ClubDeportivo1
             txtNombre.Text = "";
             txtApellido.Text = "";
             txtDocumento.Text = "";
+            txtDireccion.Text = "";
+            txtContacto.Text = "";
             cboTipo.Text = "";
             txtNombre.Focus();
         }

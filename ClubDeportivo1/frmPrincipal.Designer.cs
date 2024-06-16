@@ -142,6 +142,7 @@
             Controls.Add(btnInscribir);
             Controls.Add(lblIngreso);
             Name = "frmPrincipal";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmPrincipal";
             Load += frmPrincipal_Load;
             ResumeLayout(false);

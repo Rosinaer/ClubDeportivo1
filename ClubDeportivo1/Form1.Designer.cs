@@ -99,6 +99,7 @@
             Controls.Add(pictureBox1);
             Controls.Add(lblTitulo);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "LOGIN";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
