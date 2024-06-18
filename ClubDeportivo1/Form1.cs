@@ -59,8 +59,8 @@ namespace ClubDeportivo1
 
                 frmPrincipal Principal = new frmPrincipal();
 
-                // Principal.rol = Convert.ToString(tablaLogin.Rows[0][0]);
-                // Principal.usuario = Convert.ToString(txtUsuario.Text);
+                 Principal.rol = Convert.ToString(tablaLogin.Rows[0][0]);
+                 Principal.usuario = Convert.ToString(txtUsuario.Text);
 
                 Principal.Show(); // se llama al formulario principal
                 this.Hide(); // se oculta el formulario del login
@@ -70,6 +70,11 @@ namespace ClubDeportivo1
             {
                 MessageBox.Show("Usuario y/o password incorrecto");
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

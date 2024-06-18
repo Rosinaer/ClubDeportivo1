@@ -17,8 +17,8 @@ namespace ClubDeportivo1
             InitializeComponent();
         }
 
-        internal string? rol;
-        internal string? usuario;
+        internal string rol;
+        internal string usuario;
 
 
         private void btnInscribir_Click(object sender, EventArgs e)
@@ -31,7 +31,7 @@ namespace ClubDeportivo1
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
-            lblIngreso.Text = "USUARIO: " + usuario + " " + "(" + rol + ")";
+            lblIngreso.Text = "Usuario: " + usuario + " " + " (" + rol + ")";
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -49,7 +49,7 @@ namespace ClubDeportivo1
                 btnEmitir_Comprobante.Enabled = true;
                 btnEmitir_Carnet.Enabled = false;
             }
-           
+
             else
             {
                 btnInscribir.Enabled = false;
@@ -58,6 +58,14 @@ namespace ClubDeportivo1
                 btnEmitir_Comprobante.Enabled = false;
                 btnEmitir_Carnet.Enabled = false;
             }
+        }
+
+        private void btnPagar_Cuota_Click(object sender, EventArgs e)
+        {
+            frmPagos pagos = new frmPagos();
+
+            pagos.Show();
+            this.Hide();
         }
     }
 }

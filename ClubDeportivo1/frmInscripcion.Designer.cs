@@ -44,6 +44,15 @@
             btnLimpiar = new Button();
             btnVolver = new Button();
             label1 = new Label();
+            dgvPersonas = new DataGridView();
+            idPers = new DataGridViewTextBoxColumn();
+            Nombre = new DataGridViewTextBoxColumn();
+            Apellido = new DataGridViewTextBoxColumn();
+            nroDoc = new DataGridViewTextBoxColumn();
+            Direccion = new DataGridViewTextBoxColumn();
+            Contacto = new DataGridViewTextBoxColumn();
+            Tcliente = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dgvPersonas).BeginInit();
             SuspendLayout();
             // 
             // lblTitulo
@@ -121,6 +130,7 @@
             // txtNombre
             // 
             txtNombre.Location = new Point(203, 132);
+            txtNombre.MaxLength = 45;
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(162, 23);
             txtNombre.TabIndex = 1;
@@ -128,6 +138,7 @@
             // txtContacto
             // 
             txtContacto.Location = new Point(203, 231);
+            txtContacto.MaxLength = 20;
             txtContacto.Name = "txtContacto";
             txtContacto.Size = new Size(162, 23);
             txtContacto.TabIndex = 5;
@@ -135,6 +146,7 @@
             // txtDireccion
             // 
             txtDireccion.Location = new Point(521, 183);
+            txtDireccion.MaxLength = 80;
             txtDireccion.Name = "txtDireccion";
             txtDireccion.Size = new Size(162, 23);
             txtDireccion.TabIndex = 4;
@@ -142,6 +154,7 @@
             // txtApellido
             // 
             txtApellido.Location = new Point(521, 131);
+            txtApellido.MaxLength = 45;
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(162, 23);
             txtApellido.TabIndex = 2;
@@ -149,6 +162,7 @@
             // txtDocumento
             // 
             txtDocumento.Location = new Point(203, 182);
+            txtDocumento.MaxLength = 20;
             txtDocumento.Name = "txtDocumento";
             txtDocumento.Size = new Size(162, 23);
             txtDocumento.TabIndex = 3;
@@ -193,12 +207,69 @@
             label1.TabIndex = 15;
             label1.Text = "Cliente";
             // 
+            // dgvPersonas
+            // 
+            dgvPersonas.AllowUserToAddRows = false;
+            dgvPersonas.AllowUserToDeleteRows = false;
+            dgvPersonas.AllowUserToOrderColumns = true;
+            dgvPersonas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPersonas.Columns.AddRange(new DataGridViewColumn[] { idPers, Nombre, Apellido, nroDoc, Direccion, Contacto, Tcliente });
+            dgvPersonas.Location = new Point(67, 369);
+            dgvPersonas.Name = "dgvPersonas";
+            dgvPersonas.ReadOnly = true;
+            dgvPersonas.RowTemplate.Height = 25;
+            dgvPersonas.Size = new Size(743, 231);
+            dgvPersonas.TabIndex = 16;
+            // 
+            // idPers
+            // 
+            idPers.HeaderText = "Id";
+            idPers.Name = "idPers";
+            idPers.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            Nombre.HeaderText = "Nombre";
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
+            // 
+            // Apellido
+            // 
+            Apellido.HeaderText = "Apellido";
+            Apellido.Name = "Apellido";
+            Apellido.ReadOnly = true;
+            // 
+            // nroDoc
+            // 
+            nroDoc.HeaderText = "Nro Doc";
+            nroDoc.Name = "nroDoc";
+            nroDoc.ReadOnly = true;
+            // 
+            // Direccion
+            // 
+            Direccion.HeaderText = "Direccion";
+            Direccion.Name = "Direccion";
+            Direccion.ReadOnly = true;
+            // 
+            // Contacto
+            // 
+            Contacto.HeaderText = "Contacto";
+            Contacto.Name = "Contacto";
+            Contacto.ReadOnly = true;
+            // 
+            // Tcliente
+            // 
+            Tcliente.HeaderText = "Tipo Cliente";
+            Tcliente.Name = "Tcliente";
+            Tcliente.ReadOnly = true;
+            // 
             // frmInscripcion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Moccasin;
-            ClientSize = new Size(779, 450);
+            ClientSize = new Size(871, 612);
+            Controls.Add(dgvPersonas);
             Controls.Add(label1);
             Controls.Add(btnVolver);
             Controls.Add(btnLimpiar);
@@ -218,6 +289,7 @@
             Name = "frmInscripcion";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmInscripcion";
+            ((System.ComponentModel.ISupportInitialize)dgvPersonas).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -240,5 +312,13 @@
         private Button btnLimpiar;
         private Button btnVolver;
         private Label label1;
+        private DataGridView dgvPersonas;
+        private DataGridViewTextBoxColumn idPers;
+        private DataGridViewTextBoxColumn Nombre;
+        private DataGridViewTextBoxColumn Apellido;
+        private DataGridViewTextBoxColumn nroDoc;
+        private DataGridViewTextBoxColumn Direccion;
+        private DataGridViewTextBoxColumn Contacto;
+        private DataGridViewTextBoxColumn Tcliente;
     }
 }

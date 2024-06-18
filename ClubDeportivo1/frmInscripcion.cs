@@ -64,8 +64,25 @@ namespace ClubDeportivo1
                         MessageBox.Show("Se almaceno con exito con el codigo Nro " +
                          respuesta, "AVISO DEL SISTEMA",
                         MessageBoxButtons.OK, MessageBoxIcon.Question);
+
+                        // Agregar un renglon para la escritura
+                        int renglon = dgvPersonas.Rows.Add();
+                        // colocamos los datos en las columnas de esa fila
+                        dgvPersonas.Rows[renglon].Cells[0].Value = respuesta.ToString();
+                        dgvPersonas.Rows[renglon].Cells[1].Value = txtNombre.Text;
+                        dgvPersonas.Rows[renglon].Cells[2].Value = txtApellido.Text;
+                        dgvPersonas.Rows[renglon].Cells[3].Value = txtDocumento.Text;
+                        dgvPersonas.Rows[renglon].Cells[4].Value = txtDireccion.Text;
+                        dgvPersonas.Rows[renglon].Cells[5].Value = txtContacto.Text;
+                        dgvPersonas.Rows[renglon].Cells[6].Value = cboTipo.Text;
+
+
+                        // el foco se instala en el objeto
+                        txtNombre.Focus();
+
                     }
                 }
+
             }
         }
 
@@ -86,7 +103,37 @@ namespace ClubDeportivo1
             principal.Show();
             this.Hide();
         }
-       
+        private void dataGridList(object sender, EventArgs e)
+        {
+
+        }
+        private void btnListaP_Click(object sender, EventArgs e)
+        {
+            dgvPersonas.AutoGenerateColumns = false;
+
+            // Carga DataGridView           
+
+            DataTable Tabla = new DataTable();
+            MySqlDataReader resultado;
+            MySqlConnection sqlCon = new MySqlConnection();
+            try
+            {
+                sqlCon = Conexion.getInstancia().CrearConexion();
+                MySqlCommand comando = new MySqlCommand("SELECT * FROM persona", sqlCon);
+                comando.CommandType = CommandType.Text;
+
+                sqlCon.Open();
+                resultado = comando.ExecuteReader();
+                Tabla.Load(resultado);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+
+            dgvPersonas.DataSource = Tabla;
+        }
     }
 }
 

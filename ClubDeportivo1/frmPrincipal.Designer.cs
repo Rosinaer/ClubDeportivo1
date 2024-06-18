@@ -41,10 +41,14 @@
             // lblIngreso
             // 
             lblIngreso.AutoSize = true;
+            lblIngreso.BackColor = Color.Transparent;
+            lblIngreso.ForeColor = Color.Black;
             lblIngreso.Location = new Point(34, 19);
             lblIngreso.Name = "lblIngreso";
-            lblIngreso.Size = new Size(0, 15);
+            lblIngreso.Size = new Size(50, 15);
             lblIngreso.TabIndex = 0;
+            lblIngreso.Tag = "";
+            lblIngreso.Text = "Usuario:";
             // 
             // btnInscribir
             // 
@@ -79,6 +83,7 @@
             btnPagar_Cuota.TabIndex = 3;
             btnPagar_Cuota.Text = "PAGAR CUOTA";
             btnPagar_Cuota.UseVisualStyleBackColor = false;
+            btnPagar_Cuota.Click += btnPagar_Cuota_Click;
             // 
             // btnEmitir_Comprobante
             // 

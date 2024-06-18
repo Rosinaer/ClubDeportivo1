@@ -15,7 +15,7 @@ namespace ClubDeportivo1.Datos
         private string puerto;
         private string usuario;
         private string clave;
-        private static Conexion? con = null;
+        private static Conexion con = null;
         private Conexion() // asignamos valores a las variables de la conexion
 
         {
@@ -39,8 +39,8 @@ namespace ClubDeportivo1.Datos
                 ";username=" + this.usuario +
                 ";password=" + this.clave + 
                 ";Database=" + this.baseDatos;
-                MessageBox.Show("Conexion exitosa", "MENSAJES DEL SISTEMA",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Conexion exitosa", "MENSAJES DEL SISTEMA",
+                //    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -49,7 +49,7 @@ namespace ClubDeportivo1.Datos
                 //Console.WriteLine("Error: " + ex.Message);
                 cadena = null;
 
-                throw;
+                throw ex;
             }
             return cadena;
         }
