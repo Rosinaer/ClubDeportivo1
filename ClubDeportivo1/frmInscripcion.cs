@@ -22,12 +22,13 @@ namespace ClubDeportivo1
 
         private void cboTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //cboTipo.Items.Add("Socio");
-            //cboTipo.Items.Add("No Socio");
+            cboTipo.Items.Add("Socio");
+            cboTipo.Items.Add("No Socio");
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
+          
             if (txtNombre.Text == "" || txtApellido.Text == "" ||
                txtDocumento.Text == "" || txtDireccion.Text == "" ||
                txtContacto.Text == "" || cboTipo.Text == "")
@@ -37,6 +38,7 @@ namespace ClubDeportivo1
             }
             else
             {
+
                 string respuesta;
                 E_Persona pers = new E_Persona();
                 pers.NombreP = txtNombre.Text;
@@ -49,7 +51,7 @@ namespace ClubDeportivo1
 
 
                 // instanciamos para usar el metodo dentro de persona
-                Datos.Persona persona = new Datos.Persona();
+                Datos.D_Persona persona = new Datos.D_Persona();
                 respuesta = persona.Nueva_Pers(pers);
                 bool esnumero = int.TryParse(respuesta, out int codigo);
                 if (esnumero)
@@ -133,6 +135,11 @@ namespace ClubDeportivo1
             }
 
             dgvPersonas.DataSource = Tabla;
+        }
+
+        private void dgvPersonas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

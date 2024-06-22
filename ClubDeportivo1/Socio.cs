@@ -6,11 +6,20 @@ using System.Threading.Tasks;
 
 namespace ClubDeportivo1
 {
-    internal class Socio
+    public class Socio : Datos.Persona
     {
+
+        
         private static int _contadorId = 0;
+    
 
         public int IdSocio { get; set; }// Identificador único del socio
+        //public int IdPers {get; set; }
+
+
+        // public string AptoFisico { get; set; }
+        // public int CarnetID { get; set; }
+
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public int DNI { get; set; }
@@ -18,6 +27,9 @@ namespace ClubDeportivo1
         public string Contacto { get; set; }
         public DateTime FechaAfiliacion { get; set; }
         internal List<Actividad> Actividades { get; set; } = new List<Actividad>(); // Lista de actividades en las que está inscrito el socio
+
+
+        public Socio() { }
 
         public Socio(string nombre, string apellido, string direccion, int dni, string contacto)
         {
@@ -28,6 +40,12 @@ namespace ClubDeportivo1
             this.DNI = dni;
             this.Contacto = contacto;
             this.FechaAfiliacion = DateTime.Today;
+        }
+
+        // Metodos
+        public override void RealizarPago()
+        {
+            // Paga la cuota Mensual
         }
     }
 }

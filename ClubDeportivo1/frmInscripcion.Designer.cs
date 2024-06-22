@@ -220,6 +220,7 @@
             dgvPersonas.RowTemplate.Height = 25;
             dgvPersonas.Size = new Size(743, 231);
             dgvPersonas.TabIndex = 16;
+            dgvPersonas.CellContentClick += dgvPersonas_CellContentClick;
             // 
             // idPers
             // 

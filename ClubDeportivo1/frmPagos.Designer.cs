@@ -35,13 +35,16 @@
             cmbTcuota = new ComboBox();
             lblTcliente = new Label();
             lblTpago = new Label();
-            textBox2 = new TextBox();
+            txtMonto = new TextBox();
             lblMonto = new Label();
             dgvListaPers = new DataGridView();
             txtIDcliente = new TextBox();
             lblIDcliente = new Label();
             btnPago = new Button();
             btnVolver = new Button();
+            btnComprobante = new Button();
+            cboTpago = new ComboBox();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvListaPers).BeginInit();
             SuspendLayout();
             // 
@@ -75,7 +78,7 @@
             // 
             cmbTcliente.FormattingEnabled = true;
             cmbTcliente.Items.AddRange(new object[] { "Socio", "No Socio" });
-            cmbTcliente.Location = new Point(771, 135);
+            cmbTcliente.Location = new Point(740, 125);
             cmbTcliente.Name = "cmbTcliente";
             cmbTcliente.Size = new Size(121, 23);
             cmbTcliente.TabIndex = 21;
@@ -84,7 +87,7 @@
             // 
             cmbTcuota.FormattingEnabled = true;
             cmbTcuota.Items.AddRange(new object[] { "Mensual", "Diaria" });
-            cmbTcuota.Location = new Point(771, 194);
+            cmbTcuota.Location = new Point(740, 184);
             cmbTcuota.Name = "cmbTcuota";
             cmbTcuota.Size = new Size(121, 23);
             cmbTcuota.TabIndex = 22;
@@ -92,7 +95,7 @@
             // lblTcliente
             // 
             lblTcliente.AutoSize = true;
-            lblTcliente.Location = new Point(679, 143);
+            lblTcliente.Location = new Point(648, 133);
             lblTcliente.Name = "lblTcliente";
             lblTcliente.Size = new Size(86, 15);
             lblTcliente.TabIndex = 23;
@@ -101,23 +104,23 @@
             // lblTpago
             // 
             lblTpago.AutoSize = true;
-            lblTpago.Location = new Point(679, 197);
+            lblTpago.Location = new Point(648, 187);
             lblTpago.Name = "lblTpago";
             lblTpago.Size = new Size(81, 15);
             lblTpago.TabIndex = 24;
             lblTpago.Text = "Tipo de Cuota";
             // 
-            // textBox2
+            // txtMonto
             // 
-            textBox2.Location = new Point(771, 242);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(121, 23);
-            textBox2.TabIndex = 25;
+            txtMonto.Location = new Point(740, 277);
+            txtMonto.Name = "txtMonto";
+            txtMonto.Size = new Size(121, 23);
+            txtMonto.TabIndex = 25;
             // 
             // lblMonto
             // 
             lblMonto.AutoSize = true;
-            lblMonto.Location = new Point(717, 250);
+            lblMonto.Location = new Point(686, 280);
             lblMonto.Name = "lblMonto";
             lblMonto.Size = new Size(43, 15);
             lblMonto.TabIndex = 26;
@@ -126,15 +129,17 @@
             // dgvListaPers
             // 
             dgvListaPers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvListaPers.Location = new Point(53, 161);
+            dgvListaPers.Location = new Point(39, 143);
             dgvListaPers.Name = "dgvListaPers";
             dgvListaPers.RowTemplate.Height = 25;
             dgvListaPers.Size = new Size(585, 196);
             dgvListaPers.TabIndex = 27;
+            dgvListaPers.CellClick += dgvListaPers_CellClick;
+            dgvListaPers.CellContentClick += dgvListaPers_CellContentClick;
             // 
             // txtIDcliente
             // 
-            txtIDcliente.Location = new Point(771, 61);
+            txtIDcliente.Location = new Point(740, 84);
             txtIDcliente.MaxLength = 11;
             txtIDcliente.Name = "txtIDcliente";
             txtIDcliente.Size = new Size(121, 23);
@@ -143,7 +148,7 @@
             // lblIDcliente
             // 
             lblIDcliente.AutoSize = true;
-            lblIDcliente.Location = new Point(694, 64);
+            lblIDcliente.Location = new Point(663, 87);
             lblIDcliente.Name = "lblIDcliente";
             lblIDcliente.Size = new Size(57, 15);
             lblIDcliente.TabIndex = 29;
@@ -152,16 +157,17 @@
             // btnPago
             // 
             btnPago.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnPago.Location = new Point(710, 302);
+            btnPago.Location = new Point(669, 316);
             btnPago.Name = "btnPago";
             btnPago.Size = new Size(192, 55);
             btnPago.TabIndex = 30;
             btnPago.Text = "Realizar Cobro";
             btnPago.UseVisualStyleBackColor = true;
+            btnPago.Click += btnPago_Click;
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(836, 406);
+            btnVolver.Location = new Point(830, 12);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(100, 32);
             btnVolver.TabIndex = 31;
@@ -169,19 +175,52 @@
             btnVolver.UseVisualStyleBackColor = true;
             btnVolver.Click += btnVolver_Click;
             // 
+            // btnComprobante
+            // 
+            btnComprobante.Enabled = false;
+            btnComprobante.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnComprobante.Location = new Point(669, 401);
+            btnComprobante.Name = "btnComprobante";
+            btnComprobante.Size = new Size(192, 55);
+            btnComprobante.TabIndex = 32;
+            btnComprobante.Text = "Comprobante";
+            btnComprobante.UseVisualStyleBackColor = true;
+            btnComprobante.Click += btnComprobante_Click;
+            // 
+            // cboTpago
+            // 
+            cboTpago.FormattingEnabled = true;
+            cboTpago.Items.AddRange(new object[] { "Efectivo", "Tarjeta" });
+            cboTpago.Location = new Point(741, 231);
+            cboTpago.Name = "cboTpago";
+            cboTpago.Size = new Size(121, 23);
+            cboTpago.TabIndex = 33;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(648, 234);
+            label1.Name = "label1";
+            label1.Size = new Size(87, 15);
+            label1.TabIndex = 34;
+            label1.Text = "Forma de Pago";
+            // 
             // frmPagos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Moccasin;
-            ClientSize = new Size(959, 450);
+            ClientSize = new Size(959, 508);
+            Controls.Add(label1);
+            Controls.Add(cboTpago);
+            Controls.Add(btnComprobante);
             Controls.Add(btnVolver);
             Controls.Add(btnPago);
             Controls.Add(lblIDcliente);
             Controls.Add(txtIDcliente);
             Controls.Add(dgvListaPers);
             Controls.Add(lblMonto);
-            Controls.Add(textBox2);
+            Controls.Add(txtMonto);
             Controls.Add(lblTpago);
             Controls.Add(lblTcliente);
             Controls.Add(cmbTcuota);
@@ -206,12 +245,15 @@
         private ComboBox cmbTcuota;
         private Label lblTcliente;
         private Label lblTpago;
-        private TextBox textBox2;
+        private TextBox txtMonto;
         private Label lblMonto;
         private DataGridView dgvListaPers;
         private TextBox txtIDcliente;
         private Label lblIDcliente;
         private Button btnPago;
         private Button btnVolver;
+        private Button btnComprobante;
+        private ComboBox cboTpago;
+        private Label label1;
     }
 }

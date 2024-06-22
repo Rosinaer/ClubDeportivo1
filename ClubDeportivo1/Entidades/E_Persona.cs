@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ClubDeportivo1.Entidades
 {
-    internal class E_Persona
+    public class E_Persona
     {
-        public int IdPers { get; set; }
+        public int idPers { get; set; }
         public string NombreP { get; set; }
         public string ApellidoP { get; set; }
         public int DocP { get; set; }
