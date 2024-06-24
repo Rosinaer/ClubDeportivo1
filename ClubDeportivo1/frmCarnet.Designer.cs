@@ -41,6 +41,7 @@
             lblname = new Label();
             lblCarnetSocio = new Label();
             btnPrint = new Button();
+            btnCarnetSalir = new Button();
             pCarnet.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -83,13 +84,15 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(454, 142);
             panel1.TabIndex = 1;
+            panel1.Paint += panel1_Paint;
             // 
             // lblApe
             // 
             lblApe.AutoSize = true;
-            lblApe.Location = new Point(111, 48);
+            lblApe.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblApe.Location = new Point(68, 63);
             lblApe.Name = "lblApe";
-            lblApe.Size = new Size(29, 15);
+            lblApe.Size = new Size(34, 17);
             lblApe.TabIndex = 8;
             lblApe.Text = "Katz";
             // 
@@ -106,9 +109,10 @@
             // lblnroSocio
             // 
             lblnroSocio.AutoSize = true;
+            lblnroSocio.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             lblnroSocio.Location = new Point(245, 48);
             lblnroSocio.Name = "lblnroSocio";
-            lblnroSocio.Size = new Size(31, 15);
+            lblnroSocio.Size = new Size(35, 15);
             lblnroSocio.TabIndex = 6;
             lblnroSocio.Text = "1039";
             // 
@@ -142,11 +146,12 @@
             // lblname
             // 
             lblname.AutoSize = true;
-            lblname.Location = new Point(68, 48);
+            lblname.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblname.Location = new Point(68, 46);
             lblname.Name = "lblname";
-            lblname.Size = new Size(37, 15);
+            lblname.Size = new Size(40, 17);
             lblname.TabIndex = 2;
-            lblname.Text = "Alina ";
+            lblname.Text = "Alina";
             // 
             // lblCarnetSocio
             // 
@@ -169,15 +174,28 @@
             btnPrint.UseVisualStyleBackColor = true;
             btnPrint.Click += btnPrint_Click;
             // 
+            // btnCarnetSalir
+            // 
+            btnCarnetSalir.BackColor = Color.FromArgb(255, 255, 192);
+            btnCarnetSalir.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCarnetSalir.Location = new Point(193, 262);
+            btnCarnetSalir.Name = "btnCarnetSalir";
+            btnCarnetSalir.Size = new Size(104, 32);
+            btnCarnetSalir.TabIndex = 7;
+            btnCarnetSalir.Text = "Volver";
+            btnCarnetSalir.UseVisualStyleBackColor = false;
+            btnCarnetSalir.Click += btnSalir_Click;
+            // 
             // frmCarnet
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Moccasin;
             ClientSize = new Size(471, 317);
+            Controls.Add(btnCarnetSalir);
             Controls.Add(btnPrint);
-            Controls.Add(panel1);
             Controls.Add(pCarnet);
+            Controls.Add(panel1);
             Name = "frmCarnet";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmCarnet";
@@ -204,5 +222,6 @@
         private Button btnPrint;
         private PictureBox pictureBox1;
         private Label lblApe;
+        private Button btnCarnetSalir;
     }
 }

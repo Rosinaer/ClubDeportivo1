@@ -45,6 +45,7 @@
             btnComprobante = new Button();
             cboTpago = new ComboBox();
             label1 = new Label();
+            lblTitulo = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvListaPers).BeginInit();
             SuspendLayout();
             // 
@@ -67,9 +68,9 @@
             // btnBuscar
             // 
             btnBuscar.FlatStyle = FlatStyle.Flat;
-            btnBuscar.Location = new Point(348, 101);
+            btnBuscar.Location = new Point(348, 107);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(72, 33);
+            btnBuscar.Size = new Size(72, 23);
             btnBuscar.TabIndex = 20;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
@@ -132,7 +133,7 @@
             dgvListaPers.Location = new Point(39, 143);
             dgvListaPers.Name = "dgvListaPers";
             dgvListaPers.RowTemplate.Height = 25;
-            dgvListaPers.Size = new Size(585, 196);
+            dgvListaPers.Size = new Size(587, 228);
             dgvListaPers.TabIndex = 27;
             dgvListaPers.CellClick += dgvListaPers_CellClick;
             dgvListaPers.CellContentClick += dgvListaPers_CellContentClick;
@@ -144,6 +145,7 @@
             txtIDcliente.Name = "txtIDcliente";
             txtIDcliente.Size = new Size(121, 23);
             txtIDcliente.TabIndex = 28;
+            txtIDcliente.TextChanged += txtIDcliente_TextChanged;
             // 
             // lblIDcliente
             // 
@@ -156,6 +158,7 @@
             // 
             // btnPago
             // 
+            btnPago.Cursor = Cursors.Hand;
             btnPago.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnPago.Location = new Point(669, 316);
             btnPago.Name = "btnPago";
@@ -167,6 +170,7 @@
             // 
             // btnVolver
             // 
+            btnVolver.Cursor = Cursors.Hand;
             btnVolver.Location = new Point(830, 12);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(100, 32);
@@ -177,6 +181,7 @@
             // 
             // btnComprobante
             // 
+            btnComprobante.Cursor = Cursors.Hand;
             btnComprobante.Enabled = false;
             btnComprobante.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnComprobante.Location = new Point(669, 401);
@@ -205,12 +210,23 @@
             label1.TabIndex = 34;
             label1.Text = "Forma de Pago";
             // 
+            // lblTitulo
+            // 
+            lblTitulo.AutoSize = true;
+            lblTitulo.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTitulo.Location = new Point(336, 35);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(166, 25);
+            lblTitulo.TabIndex = 35;
+            lblTitulo.Text = "Gestion de Pagos";
+            // 
             // frmPagos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Moccasin;
             ClientSize = new Size(959, 508);
+            Controls.Add(lblTitulo);
             Controls.Add(label1);
             Controls.Add(cboTpago);
             Controls.Add(btnComprobante);
@@ -255,5 +271,6 @@
         private Button btnComprobante;
         private ComboBox cboTpago;
         private Label label1;
+        private Label lblTitulo;
     }
 }

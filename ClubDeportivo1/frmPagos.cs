@@ -1,6 +1,8 @@
 ﻿using ClubDeportivo1.Datos;
 using ClubDeportivo1.Entidades;
 using MySql.Data.MySqlClient;
+
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -56,7 +58,25 @@ namespace ClubDeportivo1
 
             dgvListaPers.DataSource = Tabla;
         }
+        private void InitializeComboBoxes()
+        {
+            // Inicializar ComboBoxes
+            cmbTcliente.Items.AddRange(new object[] { "Socio", "No Socio" });
+            cmbTcuota.Items.AddRange(new object[] { "Mensual", "Diaria" });
+        }
 
+        private void cbTipoCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Si el tipo de cliente es Socio, selecciona la cuota Mensual
+            if (cmbTcliente.SelectedItem != null && cmbTcliente.SelectedItem.ToString() == "Socio")
+            {
+                cmbTcuota.SelectedItem = "Mensual";
+            }
+            else
+            {
+                cmbTcuota.SelectedItem = null; // Resetea la selección si es necesario
+            }
+        }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -72,8 +92,8 @@ namespace ClubDeportivo1
 
         private void btnComprobante_Click(object sender, EventArgs e)
         {
-            frmCarnet doc = new frmCarnet(); 
-            doc.Show();
+            frmCarnet carnet = new frmCarnet();
+            carnet.Show();
             this.Hide();
         }
         // BTN PAGO
@@ -89,128 +109,145 @@ namespace ClubDeportivo1
             }
             else
             {
-               int idPers = Convert.ToInt32(txtIDcliente.Text);
-
-
                 // Comprueba que id exista y no haya pagado
-
+                int idPers = Convert.ToInt32(txtIDcliente.Text);
                 MySqlConnection sqlCon = null;
+                try
                 {
-                    try
+                    // Crear y abrir la conexión
+                    sqlCon = Conexion.getInstancia().CrearConexion();
+                    //if (sqlCon == null)
+                    //{
+                    //    throw new Exception("No se pudo crear la conexión.");
+                    //}
+
+                    sqlCon.Open();
+                    string query = "SELECT COUNT(*) FROM pago WHERE IdPers = @IdPers;";
+                    MySqlCommand cmd = new MySqlCommand(query, sqlCon);
+                    cmd.Parameters.AddWithValue("@IdPers", idPers);
+
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    if (count == 0)
                     {
-                        // Crear y abrir la conexión
-                        sqlCon = Conexion.getInstancia().CrearConexion();
-                        if (sqlCon == null)
-                        {
-                            throw new Exception("No se pudo crear la conexión.");
-                        }
-
-                        sqlCon.Open();
-                        string query = "SELECT COUNT(*) FROM pago WHERE IdPers = @IdPers;";
-                        MySqlCommand cmd = new MySqlCommand(query, sqlCon);
-                        cmd.Parameters.AddWithValue("@IdPers", idPers);
                         
-                        int count = Convert.ToInt32(cmd.ExecuteScalar());
 
-                        if (count == 0)
-                        {
-
-                            // Insertar nuevo pago
-                            E_Pago pago = new E_Pago();
-
-                            Datos.D_Pago nuevoPago = new Datos.D_Pago();
-                            nuevoPago.Nuevo_Pago(pago);
-
-
-                            // DateTime FechaPago = DateTime.Now;
-                            // decimal Monto = Convert.ToDecimal(txtMonto.Text.Trim());
-                            // string Estado = "PAGADO";
-                            // Cuota nuevaCuota = new Cuota(FechaPago, Monto, Estado);
-
-                            // Consulta para obtener los datos del cliente
-                            string queryDatos = @"SELECT p.NombreP, p.ApellidoP, pa.FechaPago, s.nroSocio
+                        // Consulta para obtener los datos del cliente y mostralo en el carnet
+                        string queryDatos = @"SELECT p.NombreP, p.ApellidoP, pa.FechaPago, s.nroSocio
                                                     FROM persona p
                                                     INNER JOIN pago pa ON p.IdPers = pa.IdPers
                                                     LEFT JOIN socio s ON p.IdPers = s.IdPers
                                                     WHERE p.IdPers = @IdPers;";
 
-                            MySqlCommand cmdDatos = new MySqlCommand(queryDatos, sqlCon);
-                            cmdDatos.Parameters.AddWithValue("@IdPers", idPers);
+                        MySqlCommand cmdDatos = new MySqlCommand(queryDatos, sqlCon);
+                        cmdDatos.Parameters.AddWithValue("@IdPers", idPers);
 
-                            MySqlDataReader reader = cmdDatos.ExecuteReader();
+                        MySqlDataReader reader = cmdDatos.ExecuteReader();
+
+                        // Insertar nuevo pago
+                        E_Pago pago = new E_Pago();
+                        pago.idPers = Convert.ToInt32(txtIDcliente.Text.Trim());
+                        pago.monto = Convert.ToDecimal(txtMonto.Text.Trim());
+                        pago.tipoPago = cboTpago.Text.Trim();
+                        pago.fechaPago = DateTime.Now;
+
+                        Datos.D_Pago nuevoPago = new Datos.D_Pago();
+                        nuevoPago.Nuevo_Pago(pago);
+
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+                            string nombre = reader.GetString("NombreP");
+                            string apellido = reader.GetString("ApellidoP");
+                            DateTime fechaPago = reader.GetDateTime("FechaPago");
+                            int nroSocio = reader.IsDBNull(reader.GetOrdinal("nroSocio")) ? 0 : reader.GetInt32("nroSocio");
+
+                            frmCarnet carnet = new frmCarnet
                             {
-                                if (reader.HasRows)
-                                {
-                                    reader.Read();
-                                    string nombre = reader.GetString("NombreP");
-                                    string apellido = reader.GetString("ApellidoP");
-                                    DateTime fechaPago = reader.GetDateTime("FechaPago");
-                                    int nroSocio = reader.IsDBNull(reader.GetOrdinal("nroSocio")) ? 0 : reader.GetInt32("nroSocio");
-
-                                    frmCarnet carnet = new frmCarnet
-                                    {
-                                        nombre_f = nombre,
-                                        apellido_f = apellido,
-                                        nrosocio_f = nroSocio,
-                                        fecha_f = fechaPago
-                                    };
-                                    carnet.Show();
-                              }
-
-                        };
+                                nombre_f = nombre,
+                                apellido_f = apellido,
+                                nrosocio_f = nroSocio,
+                                fecha_f = fechaPago
+                            };
 
 
-                         btnComprobante.Enabled = true;
-                         MessageBox.Show("Pago registrado exitosamente.");
-
+                            // carnet.Show();
                         }
-                        else
-                        {
-                            MessageBox.Show("El IdPers ya existe en la tabla de pagos.");
-                        }
+                        
+                        MessageBox.Show("Pago registrado exitosamente.");
+                        btnComprobante.Enabled = true;                        
+
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show("Error al conectar a la base de datos: " + ex.Message);
-                    }
-                    finally
-                    {
-                        if (sqlCon != null && sqlCon.State == ConnectionState.Open)
-                        {
-                            sqlCon.Close();
-                        }
+                        MessageBox.Show("El IdPers ya existe en la tabla de pagos.");
                     }
                 }
-            }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al conectar a la base de datos: " + ex.Message);
+                }
+                finally
+                {
+                    if (sqlCon != null && sqlCon.State == ConnectionState.Open)
+                    {
+                        sqlCon.Close();
+                    }
+                }
 
+            }
         }
 
 
         private void dgvListaPers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            int numero = e.RowIndex;
+            //int numero = e.RowIndex;
 
 
-            if (numero != 1)
+            //if (numero != 1)
+            //{
+            //    txtIDcliente.Text = Convert.ToString(dgvListaPers.Rows[numero].Cells[0].Value);
+            //    // Int32 idper = Convert.ToInt32(dgvListaPers.CurrentRow.Cells[0].Value);
+            //}
+            //else
+            //{
+            //    MessageBox.Show("selecciono el ENCABEZADO");
+            //}
+
+            if (e.RowIndex >= 0)
             {
-                txtIDcliente.Text = Convert.ToString(dgvListaPers.Rows[numero].Cells[0].Value);
-                // Int32 idper = Convert.ToInt32(dgvListaPers.CurrentRow.Cells[0].Value);
+                DataGridViewRow row = this.dgvListaPers.Rows[e.RowIndex];
 
+                txtIDcliente.Text = row.Cells["IdPers"].Value.ToString();
+                cmbTcliente.SelectedItem = row.Cells["TipoP"].Value.ToString();
 
+            }
+            else
+            {
+                MessageBox.Show("selecciono el ENCABEZADO");
             }
         }
 
         private void dgvListaPers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex >= 0) 
-            {
-                DataGridViewRow row = this.dgvListaPers.Rows[e.RowIndex];
+            //if (e.RowIndex >= 0)
+            //{
+            //    DataGridViewRow row = this.dgvListaPers.Rows[e.RowIndex];
 
-                txtIDcliente.Text = row.Cells["IdPers"].Value.ToString();
-                cmbTcliente.Text = row.Cells[6].Value.ToString();
+            //    txtIDcliente.Text = row.Cells["IdPers"].Value.ToString();
+            //    cmbTcliente.SelectedItem = row.Cells["TipoP"].Value.ToString();
 
-            }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("selecciono el ENCABEZADO");
+            //}
+
+        }
+
+        private void txtIDcliente_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

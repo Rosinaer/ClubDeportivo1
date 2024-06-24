@@ -12,6 +12,7 @@ namespace ClubDeportivo1
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
+           
         }
     }
 }

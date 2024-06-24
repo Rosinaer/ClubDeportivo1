@@ -22,8 +22,8 @@ namespace ClubDeportivo1
 
         private void cboTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cboTipo.Items.Add("Socio");
-            cboTipo.Items.Add("No Socio");
+            //cboTipo.Items.Add("Socio");
+            //cboTipo.Items.Add("No Socio");
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
@@ -77,6 +77,7 @@ namespace ClubDeportivo1
                         dgvPersonas.Rows[renglon].Cells[4].Value = txtDireccion.Text;
                         dgvPersonas.Rows[renglon].Cells[5].Value = txtContacto.Text;
                         dgvPersonas.Rows[renglon].Cells[6].Value = cboTipo.Text;
+                        dgvPersonas.Rows[renglon].Cells[7].Value = DateTime.Now.ToString("yyyy-MM-dd");
 
 
                         // el foco se instala en el objeto

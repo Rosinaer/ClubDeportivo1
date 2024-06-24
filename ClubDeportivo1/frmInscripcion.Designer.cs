@@ -52,6 +52,7 @@
             Direccion = new DataGridViewTextBoxColumn();
             Contacto = new DataGridViewTextBoxColumn();
             Tcliente = new DataGridViewTextBoxColumn();
+            fechareg = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvPersonas).BeginInit();
             SuspendLayout();
             // 
@@ -169,7 +170,8 @@
             // 
             // btnIngresar
             // 
-            btnIngresar.Location = new Point(182, 330);
+            btnIngresar.Cursor = Cursors.Hand;
+            btnIngresar.Location = new Point(208, 322);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(100, 32);
             btnIngresar.TabIndex = 7;
@@ -179,7 +181,8 @@
             // 
             // btnLimpiar
             // 
-            btnLimpiar.Location = new Point(333, 330);
+            btnLimpiar.Cursor = Cursors.Hand;
+            btnLimpiar.Location = new Point(359, 322);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(100, 32);
             btnLimpiar.TabIndex = 8;
@@ -189,7 +192,8 @@
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(471, 330);
+            btnVolver.Cursor = Cursors.Hand;
+            btnVolver.Location = new Point(497, 322);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(100, 32);
             btnVolver.TabIndex = 9;
@@ -213,7 +217,7 @@
             dgvPersonas.AllowUserToDeleteRows = false;
             dgvPersonas.AllowUserToOrderColumns = true;
             dgvPersonas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPersonas.Columns.AddRange(new DataGridViewColumn[] { idPers, Nombre, Apellido, nroDoc, Direccion, Contacto, Tcliente });
+            dgvPersonas.Columns.AddRange(new DataGridViewColumn[] { idPers, Nombre, Apellido, nroDoc, Direccion, Contacto, Tcliente, fechareg });
             dgvPersonas.Location = new Point(67, 369);
             dgvPersonas.Name = "dgvPersonas";
             dgvPersonas.ReadOnly = true;
@@ -263,6 +267,12 @@
             Tcliente.HeaderText = "Tipo Cliente";
             Tcliente.Name = "Tcliente";
             Tcliente.ReadOnly = true;
+            // 
+            // fechareg
+            // 
+            fechareg.HeaderText = "Fecha Registro";
+            fechareg.Name = "fechareg";
+            fechareg.ReadOnly = true;
             // 
             // frmInscripcion
             // 
@@ -321,5 +331,6 @@
         private DataGridViewTextBoxColumn Direccion;
         private DataGridViewTextBoxColumn Contacto;
         private DataGridViewTextBoxColumn Tcliente;
+        private DataGridViewTextBoxColumn fechareg;
     }
 }

@@ -19,6 +19,7 @@ namespace ClubDeportivo1.Datos
             try
             {
                 sqlCon = Conexion.getInstancia().CrearConexion();
+                // NuevaPers es el SP de la DB
                 MySqlCommand comando = new MySqlCommand("NuevaPers", sqlCon);
 
                 comando.CommandType = CommandType.StoredProcedure;

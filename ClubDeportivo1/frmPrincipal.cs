@@ -67,5 +67,17 @@ namespace ClubDeportivo1
             pagos.Show();
             this.Hide();
         }
+
+        private void btnSocios_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEmitir_Carnet_Click(object sender, EventArgs e)
+        {
+            frmCarnet carnet = new frmCarnet();
+            carnet.Show();
+            this.Hide();
+        }
     }
 }

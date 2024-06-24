@@ -17,20 +17,23 @@ namespace ClubDeportivo1.Datos
             MySqlConnection sqlCon = new MySqlConnection();
             try
             {
-                // 
+                // Todavia no investigue como realizar el insert a la tabla cuota luego del insert a la tabla pago
                 sqlCon = Conexion.getInstancia().CrearConexion();
 
 
-                string query = "INSERT INTO Pago (IdPers, Monto, FechaPago) VALUES (@IdPers, @Monto, @FechaPago)";
+                string query = "INSERT INTO Pago (IdPers, Monto, FechaPago, TipoPago) VALUES (@IdPers, @Monto, @FechaPago,@tipoPago)";
                // string query2 = "INSERT INTO Cuota (FechaPagoC, TipoCuota,Monto,Estado,idPers) VALUES (@FechaPago, @TipoCuota, @Monto, @Estado, @IdPers)";
 
 
                 MySqlCommand comando = new MySqlCommand(query, sqlCon);
-              //  MySqlCommand comando2 = new MySqlCommand(query2, sqlCon);
+              
                 {
                     comando.Parameters.AddWithValue("@IdPers", pago.idPers);
                     comando.Parameters.AddWithValue("@Monto", pago.monto);
                     comando.Parameters.AddWithValue("@FechaPago", pago.fechaPago);
+                    comando.Parameters.AddWithValue("@tipoPago", pago.tipoPago);
+
+                    //  MySqlCommand comando2 = new MySqlCommand(query2, sqlCon);
                     //  comando.Parameters.AddWithValue("@TipoCuota", cuota.TipoCuota);
                     //  comando.Parameters.AddWithValue("@Estado", cuota.Estado);
 

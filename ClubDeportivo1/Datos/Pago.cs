@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mysqlx.Cursor;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +9,26 @@ namespace ClubDeportivo1.Datos
 {
     internal class Pago
     {
-        public int Id {get; set;}
-        public DateTime fechaPago { get; set;}  
-        public decimal montoPagado {  get; set;}
-        public int idCuota { get; set;}
+        public DateTime Fechapago {  get; set; }        
+        public decimal Monto {  get; set;}       
         public Cuota cuota { get; set;}
-        
+
+
+        public Pago(DateTime fecha, decimal monto, Cuota cuota)
+        {
+            Fechapago = fecha;
+            Monto = monto;
+            
+        }
+
+        public DateTime ProximaFechaDePago(DateTime fechaPago)
+        {
+            return fechaPago.AddDays(30);
+        }
+
     }
+
+
+
+
 }

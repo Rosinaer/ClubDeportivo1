@@ -54,7 +54,7 @@
             // 
             btnInscribir.BackColor = Color.FromArgb(255, 255, 192);
             btnInscribir.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnInscribir.Location = new Point(86, 91);
+            btnInscribir.Location = new Point(92, 124);
             btnInscribir.Name = "btnInscribir";
             btnInscribir.Size = new Size(136, 40);
             btnInscribir.TabIndex = 1;
@@ -66,7 +66,7 @@
             // 
             btnAsignar_Actividad.BackColor = Color.FromArgb(255, 255, 192);
             btnAsignar_Actividad.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnAsignar_Actividad.Location = new Point(351, 91);
+            btnAsignar_Actividad.Location = new Point(332, 122);
             btnAsignar_Actividad.Name = "btnAsignar_Actividad";
             btnAsignar_Actividad.Size = new Size(136, 40);
             btnAsignar_Actividad.TabIndex = 2;
@@ -77,7 +77,7 @@
             // 
             btnPagar_Cuota.BackColor = Color.FromArgb(255, 255, 192);
             btnPagar_Cuota.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnPagar_Cuota.Location = new Point(86, 186);
+            btnPagar_Cuota.Location = new Point(92, 204);
             btnPagar_Cuota.Name = "btnPagar_Cuota";
             btnPagar_Cuota.Size = new Size(136, 40);
             btnPagar_Cuota.TabIndex = 3;
@@ -89,7 +89,7 @@
             // 
             btnEmitir_Comprobante.BackColor = Color.FromArgb(255, 255, 192);
             btnEmitir_Comprobante.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEmitir_Comprobante.Location = new Point(351, 186);
+            btnEmitir_Comprobante.Location = new Point(332, 191);
             btnEmitir_Comprobante.Name = "btnEmitir_Comprobante";
             btnEmitir_Comprobante.Size = new Size(136, 40);
             btnEmitir_Comprobante.TabIndex = 4;
@@ -100,12 +100,13 @@
             // 
             btnEmitir_Carnet.BackColor = Color.FromArgb(255, 255, 192);
             btnEmitir_Carnet.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEmitir_Carnet.Location = new Point(351, 286);
+            btnEmitir_Carnet.Location = new Point(332, 266);
             btnEmitir_Carnet.Name = "btnEmitir_Carnet";
             btnEmitir_Carnet.Size = new Size(136, 40);
             btnEmitir_Carnet.TabIndex = 5;
             btnEmitir_Carnet.Text = "EMITIR CARNET";
             btnEmitir_Carnet.UseVisualStyleBackColor = false;
+            btnEmitir_Carnet.Click += btnEmitir_Carnet_Click;
             // 
             // btnSalir
             // 
@@ -123,7 +124,7 @@
             // 
             chkApto_Fisico.AutoSize = true;
             chkApto_Fisico.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            chkApto_Fisico.Location = new Point(129, 307);
+            chkApto_Fisico.Location = new Point(131, 289);
             chkApto_Fisico.Name = "chkApto_Fisico";
             chkApto_Fisico.Size = new Size(97, 19);
             chkApto_Fisico.TabIndex = 7;

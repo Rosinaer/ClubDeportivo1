@@ -10,7 +10,8 @@ namespace ClubDeportivo1.Entidades
     {
         public int idPago { get; set; }
         public int idPers { get; set; }
-        public double monto { get; set; }
+        public decimal monto { get; set; }
         public DateTime fechaPago { get; set; }
+        public string tipoPago { get; set; }
     }
 }

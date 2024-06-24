@@ -104,5 +104,22 @@ namespace ClubDeportivo1
             lblnroSocio.Text = Convert.ToString(nrosocio_f);
 
         }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            frmPrincipal principal = new frmPrincipal();
+            principal.Show();
+            this.Hide();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblNom_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

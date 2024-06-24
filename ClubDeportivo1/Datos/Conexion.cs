@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
 namespace ClubDeportivo1.Datos
@@ -19,15 +20,57 @@ namespace ClubDeportivo1.Datos
         private Conexion() // asignamos valores a las variables de la conexion
 
         {
+            //bool correcto = false;
+            //int mensaje;
+
+            //string T_servidor = "Servidor";
+            //string T_puerto = "Puerto";
+            //string T_usuario = "Usuario";
+            //string T_clave = "Clave";
+
             this.baseDatos = "proyecto";
             this.servidor = "localhost";
             this.puerto = "3306";
             this.usuario = "root";
             this.clave = "";
-            //this.clave = "Ag140209";
+
+            //while (correcto != true)
+            //{
+            //    // Armamos los cuadros de dialogo para el ingreso de datos
+            //    T_servidor = Microsoft.VisualBasic.Interaction.InputBox
+            //    ("ingrese servidor", "DATOS DE INSTALACIÓN MySQL");
+            //    T_puerto = Microsoft.VisualBasic.Interaction.InputBox
+            //    ("ingrese puerto", "DATOS DE INSTALACIÓN MySQL");
+            //    T_usuario = Microsoft.VisualBasic.Interaction.InputBox
+            //    ("ingrese usuario", "DATOS DE INSTALACIÓN MySQL");
+            //    T_clave = Microsoft.VisualBasic.Interaction.InputBox
+            //    ("ingrese clave", "DATOS DE INSTALACIÓN MySQL");
+
+
+            //    mensaje = (int)MessageBox.Show("su ingreso: SERVIDOR = " +
+            //    T_servidor + " PUERTO= " + T_puerto + " USUARIO: " +
+            //    T_usuario + " CLAVE: " + T_clave,
+            //    "AVISO DEL SISTEMA", MessageBoxButtons.YesNo,
+            //    MessageBoxIcon.Question);
+            //    if (mensaje != 6)  // el valor 6 corresponde al SI
+            //    {
+            //        MessageBox.Show("INGRESE NUEVAMENTE LOS DATOS");
+            //        correcto = false;
+            //    }
+            //    else
+            //    {
+            //        correcto = true;
+            //    }
+            //}
+
+            //this.baseDatos = "proyecto";
+            //this.servidor = T_servidor;    // "localhost";
+            //this.puerto = T_puerto;       //"3306";
+            //this.usuario = T_usuario;
+            //this.clave = T_clave;
         }
-        // proceso de interacción
-        public MySqlConnection CrearConexion()
+            // proceso de interacción
+            public MySqlConnection CrearConexion()
         {
             // instanciamos una conexion
             MySqlConnection cadena = new MySqlConnection();
@@ -39,13 +82,14 @@ namespace ClubDeportivo1.Datos
                 ";username=" + this.usuario +
                 ";password=" + this.clave + 
                 ";Database=" + this.baseDatos;
+
                 //MessageBox.Show("Conexion exitosa", "MENSAJES DEL SISTEMA",
                 //    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error de conexion", "MENSAJES DEL SISTEMA",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Error de conexion", "MENSAJES DEL SISTEMA",
+                //    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 //Console.WriteLine("Error: " + ex.Message);
                 cadena = null;
 

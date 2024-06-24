@@ -9,18 +9,31 @@ using ClubDeportivo1.Entidades;
 
 namespace ClubDeportivo1.Datos
 {
-   public abstract class Persona
+    public abstract class Persona
     {
-        private string Nombre;
-        private string Apellido;
-        private int Doc;
-        private string Contacto;
+
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public int Doc { get; set; }
+        public string Contacto { get; set; }
+
 
         public Persona() { }
 
+        protected Persona(string nombre, string apellido, int doc, string contacto)
+        {
+            Nombre = nombre;
+            Apellido = apellido;
+            Doc = doc;
+            Contacto = contacto;
+        }
+
 
         // Pago general
-        public abstract void RealizarPago();
+        public virtual void RealizarPago()
+        {
+            Console.WriteLine("Una persona realiza un pago");
+        }
     }
 }
 
